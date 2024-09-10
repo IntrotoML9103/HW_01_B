@@ -1,35 +1,33 @@
 #Sneha Yalavarti, HW_01_B
 #Original File: https://editor.p5js.org/thiagohersan/sketches/mJdFIgeNo
 
-import random
-
 class Agent: 
-    def _init_ (self, width, height):
-        self.x = random.random(17, width - 17)
-        self.y = random.random(17, height - 17)
-        self.vx = random.random(-2, 2)
-        self.vy = random.random(-2, 2)
-        self.radius = random.random(8, 16)
+    def __init__ (self, width, height):
+        self.x = random(17, width - 17)
+        self.y = random(17, height - 17)
+        self.vx = random(-2, 2)
+        self.vy = random(-2, 2)
+        self.radius = random(8, 16)
         self.diam = 2 * self.radius
     
-    def update():
+    def update(self):
         self.updateByVelocity()
         self.bounceBoundary()
         
-    def bounceBoundary():
+    def bounceBoundary(self):
         if (self.x + self.radius >= width or self.x - self.radius <= 0):
             self.vx *= -1
         if(self.y + self.radius >= height or self.y - self.radius <= 0):
             self.vy *= -1
             
-    def updateByVelocity():
+    def updateByVelocity(self):
         self.x += self.vx;
         self.y += self.vy;
         
-    def drawAgent():
-        ellipse(self.x, self.y, self.diam)
+    def drawAgent(self):
+        ellipse(self.x, self.y, self.diam, self.diam)
     
-    def draw(): 
+    def draw(self): 
         if (currentMode == POINT_MODE):
             stroke(0)
             self.drawPoint()
@@ -38,10 +36,10 @@ class Agent:
             noFill()
             self.drawOverlap()    
         
-    def drawPoint():
-        point(tself.x, self.y)  
+    def drawPoint(self):
+        point(self.x, self.y)  
         
-    def drawOverlap():
+    def drawOverlap(self):
         for i in range(0,len(agents),1):
             otherAgent = agents[i]
             if (self != otherAgent): 
@@ -49,7 +47,7 @@ class Agent:
                 if (tDist < self.radius + otherAgent.radius):
                     cx = (self.x + otherAgent.x) / 2
                     cy = (self.y + otherAgent.y) / 2
-                    ellipse(cx, cy, tDist)
+                    ellipse(cx, cy, tDist, tDist)
                     
 maxAgents = 32
 
